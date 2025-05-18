@@ -1,0 +1,13 @@
+main:
+  steps:
+  - init:
+      assign:
+        - url: "https://hello-cloudrun-xxxx.a.run.app"  # Replace this
+  - callCloudRun:
+      call: http.get
+      args:
+        url: ${url}
+  - logResult:
+      call: sys.log
+      args:
+        data: ${callCloudRun.body}
